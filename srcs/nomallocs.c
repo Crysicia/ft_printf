@@ -6,15 +6,11 @@
 /*   By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 09:50:55 by lpassera          #+#    #+#             */
-/*   Updated: 2020/11/30 16:16:55 by lpassera         ###   ########.fr       */
+/*   Updated: 2020/12/03 17:15:10 by lpassera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/nomallocs.h"
-
-# include <stdlib.h>
-# include <stdarg.h>
-# include <unistd.h>
 
 int ft_abs(int n)
 {
@@ -103,7 +99,7 @@ int get_precision(const char **str, va_list args)
 	{
 		*str += 1;
 		arg = va_arg(args, int);
-		return (arg > 0 ? NOT_SET : arg);
+		return (arg < 0 ? NOT_SET : arg);
 	}
 	return (ft_atoi(str));
 }
@@ -130,25 +126,81 @@ void ft_display(int flags, int field_width, int precision, int conversion)
 {
 	if (flags == ERROR || field_width == ERROR || precision == ERROR || conversion == ERROR)
 		return ;
-	printf("\n----- FLAGS -----\nFlag: %d\nField width: %d\nPrecision: %d\nConversion: %c\n",
+	printf("\n----- FLAGS -----\nFlag: %d\nField width: %d\nPrecision: %d\nConversion: %c\n-----------------\n",
 		flags, field_width, precision, conversion);
 }
 
-void ft_debug(char *text)
+int ft_putchar(char c)
 {
-	write(1, text, strlen(text));
+	write(1, &c, 1);
+	return (1);
+}
+
+int ft_putnchar(char c, int n)
+{	
+	while (n > 0)
+	{
+		write(1, &c, 1);
+		n--;
+	}
+	return (n);
+}
+
+int	ft_strlen(const char *s)
+{
+	int	index;
+
+	index = 0;
+	while (s[index])
+		index++;
+	return (index);
+}
+
+int ft_putstr(char *str)
+{
+	int length;
+
+	length = ft_strlen(str);
+	write(1, str, length);
+	return (length);
+}
+
+int ft_convert(int flag, int field_width, int precision, int conversion, va_list args)
+{
+	if (conversion == 'c')
+		return (ft_putchar(va_arg(args, int)));
+	// else if (conversion == 's')
+	// 	;
+	// else if (conversion == 'p')
+	// 	;
+	else if (conversion == 'd' || conversion == 'i')
+		return (pf_print_int(flag, field_width, precision, args));
+	// else if (conversion == 'u')
+	// 	;
+	// else if (conversion == 'x')
+	// 	;
+	// else if (conversion == 'X')
+	// 	;
+	else
+		return (ERROR);
 }
 
 /*
 ** Assuming str starts at '%'
 */
-void ft_parse_directive(const char **str, va_list args)
+int ft_parse_directive(const char **str, va_list args)
 {
 	int flag;
 	int field_width;
 	int precision;
 	int conversion;
 
+	if (**str == '%')
+	{
+		*str += 1;
+		write(1, "%", 1);
+		return (1);
+	}
 	flag = get_flags(str);
 	field_width = get_field_width(str, args);
 	if (field_width < 0)
@@ -158,7 +210,8 @@ void ft_parse_directive(const char **str, va_list args)
 	}
 	precision = get_precision(str, args);
 	conversion = get_conversion(str);
-	ft_display(flag, field_width, precision, conversion);
+	//ft_display(flag, field_width, precision, conversion);
+	return (ft_convert(flag, field_width, precision, conversion, args));
 }
 
 int ft_printf(const char *format_string, ...)
@@ -173,19 +226,15 @@ int ft_printf(const char *format_string, ...)
 		if (*format_string == '%')
 		{
 			format_string++;
-			ft_parse_directive(&format_string, args);
+			chars_read += ft_parse_directive(&format_string, args);
 		}
 		else
 		{
 			write(1, format_string, 1);
+			chars_read++;
 			format_string++;
 		}
 	}
 	va_end(args);
 	return (chars_read);
-}
-
-int main(void)
-{
-    ft_printf("Yo tout le monde %s %0.1d lolilol");
 }
