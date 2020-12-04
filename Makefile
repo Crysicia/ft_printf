@@ -6,7 +6,7 @@
 #    By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/15 11:22:32 by lpassera          #+#    #+#              #
-#    Updated: 2020/12/03 11:43:17 by lpassera         ###   ########.fr        #
+#    Updated: 2020/12/04 18:34:36 by lpassera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,11 @@ NAME 		= libftprintf.a
 HEADER 		= includes/nomallocs.h
 
 SRCS 		= srcs/nomallocs.c \
-			  srcs/pf_print_int.c
+			  srcs/pf_print_int.c \
+			  srcs/ft_math.c \
+			  srcs/ft_string.c \
+			  srcs/ft_conversion.c \
+			  srcs/pf_parse_directive.c
 
 OBJS 		= $(SRCS:.c=.o)
 BONUS_OBJS 	= $(BONUS_SRCS:.c=.o)
@@ -30,6 +34,9 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(AR) $(NAME) $(OBJS)
+
+test: $(OBJS)
+	gcc srcs/main.c $(OBJS)
 
 clean:
 	$(RM) $(OBJS)
