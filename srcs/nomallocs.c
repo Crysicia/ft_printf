@@ -6,7 +6,7 @@
 /*   By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 09:50:55 by lpassera          #+#    #+#             */
-/*   Updated: 2020/12/04 18:40:21 by lpassera         ###   ########.fr       */
+/*   Updated: 2020/12/05 17:52:45 by lpassera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void ft_display(int flags, int field_width, int precision, int conversion)
 int ft_convert(t_directive *directive, va_list args)
 {
 	if (directive->type == 'c')
-		return (ft_putchar(va_arg(args, int)));
+		return (pf_print_char(directive, args));
 	// else if (conversion == 's')
 	// 	;
 	// else if (conversion == 'p')
