@@ -6,7 +6,7 @@
 #    By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/15 11:22:32 by lpassera          #+#    #+#              #
-#    Updated: 2020/12/05 17:58:45 by lpassera         ###   ########.fr        #
+#    Updated: 2020/12/05 19:03:25 by lpassera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRCS 		= srcs/nomallocs.c \
 			  srcs/ft_conversion.c \
 			  srcs/pf_parse_directive.c \
 			  srcs/pf_print_char.c \
+			  srcs/pf_print_string.c \
 
 OBJS 		= $(SRCS:.c=.o)
 BONUS_OBJS 	= $(BONUS_SRCS:.c=.o)
@@ -37,7 +38,7 @@ $(NAME): $(OBJS)
 	$(AR) $(NAME) $(OBJS)
 
 test: $(OBJS)
-	gcc srcs/main_char.c $(OBJS)
+	gcc srcs/main_str.c $(OBJS)
 
 clean:
 	$(RM) $(OBJS)

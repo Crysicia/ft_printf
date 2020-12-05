@@ -6,7 +6,7 @@
 /*   By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 17:12:18 by lpassera          #+#    #+#             */
-/*   Updated: 2020/12/04 17:16:56 by lpassera         ###   ########.fr       */
+/*   Updated: 2020/12/05 19:02:08 by lpassera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 int ft_max(int a, int b)
 {
 	return ((a > b) ? a : b);
+}
+
+int ft_min(int a, int b)
+{
+	return ((a < b) ? a : b);
 }
 
 int ft_abs(int n)
