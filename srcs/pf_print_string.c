@@ -6,7 +6,7 @@
 /*   By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 18:54:18 by lpassera          #+#    #+#             */
-/*   Updated: 2020/12/06 16:22:40 by lpassera         ###   ########.fr       */
+/*   Updated: 2020/12/06 16:40:43 by lpassera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,6 @@
 #include "../includes/ft_math.h"
 #include "../includes/ft_string.h"
 #include "../includes/pf_parse_directive.h"
-
-void pfs_handle_null(t_directive *directive, const char **str)
-{
-	if (*str)
-		return ;
-	*str = "(null)";
-	if (directive->precision < ft_strlen(*str)
-		&& directive->precision != NOT_SET)
-		directive->precision = 0;
-	else
-		directive->precision = ft_strlen(*str);
-}
 
 int pf_putnstr(const char *str, int limit)
 {
@@ -48,8 +36,8 @@ int pf_print_string(t_directive *directive, va_list args)
 	char padding_char;
 
 	printed = 0;
-	str = va_arg(args, const char *);
-	pfs_handle_null(directive, &str);
+	if (!(str = va_arg(args, const char *)))
+		str = "(null)";
 	if (directive->precision == NOT_SET)
 		directive->precision = ft_strlen(str);
 	min = ft_min(ft_strlen(str), directive->precision);
