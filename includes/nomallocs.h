@@ -15,5 +15,6 @@ int ft_printf(const char *format_string, ...);
 int pf_print_int(t_directive *directive, va_list args);
 int pf_print_char(t_directive *directive, va_list args);
 int pf_print_string(t_directive *directive, va_list args);
+int pf_print_unsigned(t_directive *directive, va_list args);
 
 #endif

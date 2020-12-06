@@ -52,14 +52,14 @@ int main(int argc, char **argv)
         arg2 = atoi(argv[2]);
 
         printf("\n\n--- Star args ---\n");
-        test_printf(printf("%dd    |%*<flag>|", arg1, arg1, value));
-        test_printf(printf("-%dd   |%-*<flag>|", arg1, arg1, value));
-        test_printf(printf("0%dd   |%0*<flag>|", arg1, arg1, value));
-        test_printf(printf(".%dd   |%.*<flag>|", arg2, arg2, value));
-        test_printf(printf("%d.d   |%*.<flag>|", arg1, arg1, value));
-        test_printf(printf("%d.%dd  |%*.*<flag>|", arg1, arg2, arg1, arg2, value));
-        test_printf(printf("0%d.%dd |%0*.*<flag>|", arg1, arg2, arg1, arg2, value));
-        test_printf(printf("-%d.%dd |%-*.*<flag>|", arg1, arg2, arg1, arg2, value));
+        test_printf(printf("%d<flag>   |%*<flag>|", arg1, arg1, value));
+        test_printf(printf("-%d<flag>  |%-*<flag>|", arg1, arg1, value));
+        test_printf(printf("0%d<flag>  |%0*<flag>|", arg1, arg1, value));
+        test_printf(printf(".%d<flag>  |%.*<flag>|", arg2, arg2, value));
+        test_printf(printf("%d.<flag>  |%*.<flag>|", arg1, arg1, value));
+        test_printf(printf("%d.%d<flag> |%*.*<flag>|", arg1, arg2, arg1, arg2, value));
+        test_printf(printf("0%d.%d<flag>|%0*.*<flag>|", arg1, arg2, arg1, arg2, value));
+        test_printf(printf("-%d.%d<flag>|%-*.*<flag>|", arg1, arg2, arg1, arg2, value));
     }
     return 0;
 }

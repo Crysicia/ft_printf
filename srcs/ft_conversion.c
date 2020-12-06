@@ -6,7 +6,7 @@
 /*   By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 17:25:49 by lpassera          #+#    #+#             */
-/*   Updated: 2020/12/06 15:56:29 by lpassera         ###   ########.fr       */
+/*   Updated: 2020/12/06 18:07:58 by lpassera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int				ft_atoi(const char **str)
 	return (total);
 }
 
-int ft_int_size(int n)
+int ft_int_size(long int n)
 {
 	int	length;
 
@@ -64,6 +64,24 @@ char			*ft_itoa(int n)
 		while (n != 0)
 		{
 			str[length--] = (n < 0) ? -(n % 10) + '0' : (n % 10) + '0';
+			n /= 10;
+		}
+	}
+	return (str);
+}
+
+char			*ft_utoa(unsigned int n)
+{
+	char	*str;
+	size_t	length;
+
+	length = ft_int_size(n);
+	if ((str = malloc(1 + length * sizeof(char))))
+	{
+		str[length--] = '\0';
+		while (n != 0)
+		{
+			str[length--] = (n % 10) + '0';
 			n /= 10;
 		}
 	}
