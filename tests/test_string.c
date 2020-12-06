@@ -42,6 +42,36 @@ int main(int argc, char **argv)
     test_printf(printf("-5.4s |%-5.4s|", value));
     test_printf(printf("-4.5s |%-4.5s|", value));
 
+    printf("\n\n--- NULL value ---\n");
+    test_printf(printf("s     |%s|", NULL));
+    test_printf(printf("1s    |%1s|", NULL));
+    test_printf(printf("5s    |%5s|", NULL));
+    test_printf(printf("-1s   |%-1s|", NULL));
+    test_printf(printf("-5s   |%-5s|", NULL));
+    test_printf(printf("01s   |%01s|", NULL));
+    test_printf(printf("05s   |%05s|", NULL));
+    test_printf(printf(".s    |%.s|", NULL));
+    test_printf(printf(".1s   |%.1s|", NULL));
+    test_printf(printf(".5s   |%.5s|", NULL));
+    test_printf(printf("0.s   |%0.s|", NULL));
+    test_printf(printf("-.s   |%-.s|", NULL));
+    test_printf(printf("1.s   |%1.s|", NULL));
+    test_printf(printf("5.s   |%5.s|", NULL));
+    test_printf(printf("1.1s  |%1.1s|", NULL));
+    test_printf(printf("1.5s  |%1.5s|", NULL));
+    test_printf(printf("5.1s  |%5.1s|", NULL));
+    test_printf(printf("5.5s  |%5.5s|", NULL));
+    test_printf(printf("5.4s  |%5.4s|", NULL));
+    test_printf(printf("4.5s  |%4.5s|", NULL));
+    test_printf(printf("05.1s |%05.1s|", NULL));
+    test_printf(printf("05.5s |%05.5s|", NULL));
+    test_printf(printf("05.4s |%05.4s|", NULL));
+    test_printf(printf("04.5s |%04.5s|", NULL));
+    test_printf(printf("-5.1s |%-5.1s|", NULL));
+    test_printf(printf("-5.5s |%-5.5s|", NULL));
+    test_printf(printf("-5.4s |%-5.4s|", NULL));
+    test_printf(printf("-4.5s |%-4.5s|", NULL));
+
     if (argc == 4)
     {
         int arg1;

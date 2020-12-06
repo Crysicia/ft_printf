@@ -6,7 +6,7 @@
 /*   By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 17:42:26 by lpassera          #+#    #+#             */
-/*   Updated: 2020/12/04 17:54:02 by lpassera         ###   ########.fr       */
+/*   Updated: 2020/12/06 15:57:50 by lpassera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	 pf_init_directive(t_directive *directive)
     directive->flags.zero = NOT_SET;
     directive->flags.minus = NOT_SET;
     directive->field_width = 0;
-    directive->precision = 0;
+    directive->precision = NOT_SET;
     directive->type = 0;
 }
 
