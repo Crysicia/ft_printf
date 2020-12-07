@@ -6,7 +6,7 @@
 #    By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/15 11:22:32 by lpassera          #+#    #+#              #
-#    Updated: 2020/12/07 13:28:54 by lpassera         ###   ########.fr        #
+#    Updated: 2020/12/07 14:13:27 by lpassera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRCS 		= srcs/nomallocs.c \
 			  srcs/pf_print_string.c \
 			  srcs/pf_print_unsigned.c \
 			  srcs/pf_print_hex.c \
+			  srcs/pf_print_addr.c \
 
 OBJS 		= $(SRCS:.c=.o)
 BONUS_OBJS 	= $(BONUS_SRCS:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 17:25:49 by lpassera          #+#    #+#             */
-/*   Updated: 2020/12/07 13:39:18 by lpassera         ###   ########.fr       */
+/*   Updated: 2020/12/07 14:32:21 by lpassera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,22 @@ char			*ft_itoa(int n)
 	return (str);
 }
 
-char			*ft_utoa(unsigned int n)
+int ft_unsigned_size(unsigned long long n, int base)
+{
+	int	length;
+
+	length = 1;
+	while (n /= base)
+		length++;
+	return (length);
+}
+
+char			*ft_utoa(unsigned long long n)
 {
 	char	*str;
 	size_t	length;
 
-	length = ft_int_size(n, DECIMAL_BASE);
+	length = ft_unsigned_size(n, DECIMAL_BASE);
 	if ((str = malloc(1 + length * sizeof(char))))
 	{
 		str[length--] = '\0';
@@ -89,14 +99,14 @@ char			*ft_utoa(unsigned int n)
 	return (str);
 }
 
-char			*ft_utoa_base(unsigned int n, char *base)
+char			*ft_utoa_base(unsigned long long n, char *base)
 {
 	char	*str;
 	size_t	length;
 	int base_size;
 
 	base_size = ft_strlen(base);
-	length = ft_int_size(n, base_size);
+	length = ft_unsigned_size(n, base_size);
 	if ((str = malloc(1 + length * sizeof(char))))
 	{
 		str[length--] = '\0';
