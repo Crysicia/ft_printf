@@ -6,7 +6,7 @@
 /*   By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 17:25:49 by lpassera          #+#    #+#             */
-/*   Updated: 2020/12/07 14:32:21 by lpassera         ###   ########.fr       */
+/*   Updated: 2020/12/07 20:18:47 by lpassera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int ft_int_size(long int n, int base)
 	return (length);
 }
 
-char			*ft_itoa(int n)
+char			*ft_itoa(long n)
 {
 	char	*str;
 	size_t	length;

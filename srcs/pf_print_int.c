@@ -6,7 +6,7 @@
 /*   By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 10:25:18 by lpassera          #+#    #+#             */
-/*   Updated: 2020/12/07 13:38:25 by lpassera         ###   ########.fr       */
+/*   Updated: 2020/12/07 20:18:25 by lpassera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "../includes/ft_conversion.h"
 #include "../includes/pf_parse_directive.h"
 
-int	pfi_print_field_width(t_directive *directive, int max, int *value)
+int	pfi_print_field_width(t_directive *directive, int max, long *value)
 {
 	int		printed;
 	char	padding_char;
@@ -31,7 +31,7 @@ int	pfi_print_field_width(t_directive *directive, int max, int *value)
 	{
 		if (*value < 0)
 		{
-			*value = ft_abs(*value);
+			*value = -*value;
 			printed += ft_putchar('-');
 		}
 		padding_char = '0';
@@ -50,7 +50,7 @@ int	pfi_handle_zero(int precision, int field_width)
 	return (1);
 }
 
-int	pfi_print_precision(t_directive *directive, int *value)
+int	pfi_print_precision(t_directive *directive, long *value)
 {
 	int printed;
 	char *number;
@@ -58,7 +58,7 @@ int	pfi_print_precision(t_directive *directive, int *value)
 	printed = 0;
 	if (*value < 0)
 	{
-		*value = ft_abs(*value);
+		*value = -*value;
 		printed += ft_putchar('-');
 	}
 	printed += ft_putnchar('0', directive->precision - ft_int_size(*value, DECIMAL_BASE));
@@ -76,7 +76,7 @@ int	pfi_print_precision(t_directive *directive, int *value)
 int	pf_print_int(t_directive *directive, va_list args)
 {
 	int size;
-	int value;
+	long value;
 	int printed;
 	int max;
 	int neg;

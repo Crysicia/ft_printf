@@ -6,7 +6,7 @@
 /*   By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 17:28:00 by lpassera          #+#    #+#             */
-/*   Updated: 2020/12/07 14:27:38 by lpassera         ###   ########.fr       */
+/*   Updated: 2020/12/07 20:18:57 by lpassera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 int ft_int_size(long int n, int base);
 int ft_atoi(const char **str);
-char *ft_itoa(int n);
+char *ft_itoa(long n);
 int ft_unsigned_size(unsigned long long n, int base);
 char *ft_utoa(unsigned long long n);
 char			*ft_utoa_base(unsigned long long n, char *base);
