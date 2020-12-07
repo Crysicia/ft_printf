@@ -6,7 +6,7 @@
 /*   By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 17:42:26 by lpassera          #+#    #+#             */
-/*   Updated: 2020/12/06 15:57:50 by lpassera         ###   ########.fr       */
+/*   Updated: 2020/12/07 17:52:16 by lpassera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int pf_get_conversion(const char **str)
 {
 	int conversion;
 
-	if (ft_strchr("cspdiuxX", **str))
+	if (ft_strchr("cspdiuxX%", **str))
 	{
 		conversion = (int)**str;
 		*str += 1;

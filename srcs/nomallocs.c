@@ -6,7 +6,7 @@
 /*   By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 09:50:55 by lpassera          #+#    #+#             */
-/*   Updated: 2020/12/07 14:33:05 by lpassera         ###   ########.fr       */
+/*   Updated: 2020/12/07 17:59:19 by lpassera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ int ft_convert(t_directive *directive, va_list args)
 		return (pf_print_hex(directive, HEX_CHARSET, args));
 	else if (directive->type == 'X')
 		return (pf_print_hex(directive, HEX_UPPER_CHARSET, args));
+	else if (directive->type == '%')
+		return (ft_putchar('%'));
 	else
 		return (ERROR);
 }
@@ -79,14 +81,7 @@ int ft_printf(const char *format_string, ...)
 		if (*format_string == '%')
 		{
 			format_string++;
-			if (*format_string == '%')
-			{
-				write(1, "%", 1);
-				chars_read++;
-				format_string++;
-			}
-			else
-				chars_read += pf_parse_directive(&format_string, args);
+			chars_read += pf_parse_directive(&format_string, args);
 		}
 		else
 		{
