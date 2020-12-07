@@ -6,7 +6,7 @@
 /*   By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 10:25:18 by lpassera          #+#    #+#             */
-/*   Updated: 2020/12/07 16:59:29 by lpassera         ###   ########.fr       */
+/*   Updated: 2020/12/07 17:46:40 by lpassera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,10 @@ int	pfa_print_field_width(t_directive *directive, int max, int *printed_head)
 	return (printed);
 }
 
-int	pfa_handle_zero(int precision, int field_width)
+int	pfa_handle_zero(int precision)
 {
-	if (precision == 0 && field_width < 3)
-		return (0);
 	if (precision == 0)
-		return (ft_putchar(' '));
+		return (0);
 	return (ft_putchar('0'));
 }
 
@@ -62,7 +60,7 @@ int	pfa_print_precision(t_directive *directive, unsigned long long *value, int *
 	}
 	printed += ft_putnchar('0', directive->precision - ft_unsigned_size(*value, HEX_BASE));
 	if (*value == 0)
-		printed += pfa_handle_zero(directive->precision, directive->field_width);
+		printed += pfa_handle_zero(directive->precision);
 	else
 	{
 		number = ft_utoa_base(*value, HEX_CHARSET);
