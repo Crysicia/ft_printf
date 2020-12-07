@@ -6,12 +6,13 @@
 /*   By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 17:25:49 by lpassera          #+#    #+#             */
-/*   Updated: 2020/12/06 18:07:58 by lpassera         ###   ########.fr       */
+/*   Updated: 2020/12/07 13:39:18 by lpassera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_conversion.h"
 #include "../includes/ft_string.h"
+#include "../includes/pf_types.h"
 
 int				ft_atoi(const char **str)
 {
@@ -27,14 +28,14 @@ int				ft_atoi(const char **str)
 	return (total);
 }
 
-int ft_int_size(long int n)
+int ft_int_size(long int n, int base)
 {
 	int	length;
 
 	length = 1;
 	if (n < 0)
 		length++;
-	while (n /= 10)
+	while (n /= base)
 		length++;
 	return (length);
 }
@@ -46,7 +47,7 @@ char			*ft_itoa(int n)
 	int		negative;
 
 	negative = (n < 0) ? 1 : 0;
-	length = ft_int_size(n);
+	length = ft_int_size(n, DECIMAL_BASE);
 	// if (n == 0)
 	// {
 	// 	if ((str = malloc(2 * sizeof(char))))
@@ -75,7 +76,7 @@ char			*ft_utoa(unsigned int n)
 	char	*str;
 	size_t	length;
 
-	length = ft_int_size(n);
+	length = ft_int_size(n, DECIMAL_BASE);
 	if ((str = malloc(1 + length * sizeof(char))))
 	{
 		str[length--] = '\0';
@@ -83,6 +84,26 @@ char			*ft_utoa(unsigned int n)
 		{
 			str[length--] = (n % 10) + '0';
 			n /= 10;
+		}
+	}
+	return (str);
+}
+
+char			*ft_utoa_base(unsigned int n, char *base)
+{
+	char	*str;
+	size_t	length;
+	int base_size;
+
+	base_size = ft_strlen(base);
+	length = ft_int_size(n, base_size);
+	if ((str = malloc(1 + length * sizeof(char))))
+	{
+		str[length--] = '\0';
+		while (n != 0)
+		{
+			str[length--] = base[n % base_size];
+			n /= base_size;
 		}
 	}
 	return (str);

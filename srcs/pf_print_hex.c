@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pf_print_unsigned.c                                :+:      :+:    :+:   */
+/*   pf_print_hex.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 10:25:18 by lpassera          #+#    #+#             */
-/*   Updated: 2020/12/07 13:38:03 by lpassera         ###   ########.fr       */
+/*   Updated: 2020/12/07 13:41:47 by lpassera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "../includes/ft_conversion.h"
 #include "../includes/pf_parse_directive.h"
 
-int	pfu_print_field_width(t_directive *directive, int max)
+int	pfh_print_field_width(t_directive *directive, int max)
 {
 	int		printed;
 	char	padding_char;
@@ -33,7 +33,7 @@ int	pfu_print_field_width(t_directive *directive, int max)
 	return (printed);
 }
 
-int	pfu_handle_zero(int precision, int field_width)
+int	pfh_handle_zero(int precision, int field_width)
 {
 	if (precision == 0 && field_width == 0)
 		return (0);
@@ -43,25 +43,25 @@ int	pfu_handle_zero(int precision, int field_width)
 	return (1);
 }
 
-int	pfu_print_precision(t_directive *directive, unsigned int *value)
+int	pfh_print_precision(t_directive *directive, char *charset, unsigned int *value)
 {
 	int printed;
 	char *number;
 
 	printed = 0;
-	printed += ft_putnchar('0', directive->precision - ft_int_size(*value, DECIMAL_BASE));
+	printed += ft_putnchar('0', directive->precision - ft_int_size(*value, HEX_BASE));
 	if (*value == 0)
-		printed += pfu_handle_zero(directive->precision, directive->field_width);
+		printed += pfh_handle_zero(directive->precision, directive->field_width);
 	else
 	{
-		number = ft_utoa(*value);
+		number = ft_utoa_base(*value, charset);
 		printed += ft_putstr(number);
 		free(number);
 	}
 	return (printed);
 }
 
-int	pf_print_unsigned(t_directive *directive, va_list args)
+int	pf_print_hex(t_directive *directive, char *charset, va_list args)
 {
 	int size;
 	unsigned int value;
@@ -70,17 +70,17 @@ int	pf_print_unsigned(t_directive *directive, va_list args)
 
 	printed = 0;
 	value = va_arg(args, unsigned int);
-	size = ft_int_size(value, DECIMAL_BASE);
+	size = ft_int_size(value, HEX_BASE);
 	max = ft_max(directive->precision, size);
 	if (directive->flags.minus == 1)
 	{
-		printed += pfu_print_precision(directive, &value);
-		printed += pfu_print_field_width(directive, max);
+		printed += pfh_print_precision(directive, charset, &value);
+		printed += pfh_print_field_width(directive, max);
 	}
 	else
 	{
-		printed += pfu_print_field_width(directive, max);
-		printed += pfu_print_precision(directive, &value);
+		printed += pfh_print_field_width(directive, max);
+		printed += pfh_print_precision(directive, charset, &value);
 	}
 	return (printed);
 }

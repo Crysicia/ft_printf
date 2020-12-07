@@ -6,7 +6,7 @@
 /*   By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 18:00:26 by lpassera          #+#    #+#             */
-/*   Updated: 2020/12/06 13:23:59 by lpassera         ###   ########.fr       */
+/*   Updated: 2020/12/07 13:35:01 by lpassera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@
 #define ERROR -512
 #define FLAG_MINUS 256
 #define FLAG_ZERO 512
+#define DECIMAL_BASE 10
+#define HEX_BASE 16
+#define HEX_CHARSET "0123456789abcdef"
+#define HEX_UPPER_CHARSET "0123456789ABCDEF"
 
 typedef struct s_flags
 {

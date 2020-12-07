@@ -6,7 +6,7 @@
 /*   By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 09:50:55 by lpassera          #+#    #+#             */
-/*   Updated: 2020/12/06 17:55:28 by lpassera         ###   ########.fr       */
+/*   Updated: 2020/12/07 13:42:37 by lpassera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ int ft_convert(t_directive *directive, va_list args)
 		return (pf_print_int(directive, args));
 	else if (directive->type == 'u')
 		return (pf_print_unsigned(directive, args));
-	// else if (directive->type == 'x')
-	// 	;
-	// else if (directive->type == 'X')
-	// 	;
+	else if (directive->type == 'x')
+		return (pf_print_hex(directive, HEX_CHARSET, args));
+	else if (directive->type == 'X')
+		return (pf_print_hex(directive, HEX_UPPER_CHARSET, args));
 	else
 		return (ERROR);
 }
