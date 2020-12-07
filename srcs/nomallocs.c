@@ -6,7 +6,7 @@
 /*   By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 09:50:55 by lpassera          #+#    #+#             */
-/*   Updated: 2020/12/07 18:57:13 by lpassera         ###   ########.fr       */
+/*   Updated: 2020/12/07 19:05:53 by lpassera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void ft_display(int flags, int field_width, int precision, int conversion)
 int ft_convert(t_directive *directive, va_list args)
 {
 	if (directive->type == 'c')
-		return (pf_print_char(directive, va_arg(args, int)));
+		return (pf_print_char(directive, args));
 	else if (directive->type == 's')
 		return (pf_print_string(directive, args));
 	else if (directive->type == 'p')
@@ -41,7 +41,7 @@ int ft_convert(t_directive *directive, va_list args)
 	else if (directive->type == 'X')
 		return (pf_print_hex(directive, HEX_UPPER_CHARSET, args));
 	else if (directive->type == '%')
-		return (pf_print_char(directive, '%'));
+		return (pf_print_percent(directive));
 	else
 		return (ERROR);
 }
