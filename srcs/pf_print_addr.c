@@ -6,7 +6,7 @@
 /*   By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 10:25:18 by lpassera          #+#    #+#             */
-/*   Updated: 2020/12/07 17:46:40 by lpassera         ###   ########.fr       */
+/*   Updated: 2020/12/07 19:43:53 by lpassera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ int	pf_print_addr(t_directive *directive, va_list args)
 	printed = 0;
 	value = va_arg(args, unsigned long long);
 	size = ft_unsigned_size(value, HEX_BASE) + 2;
+	if (value == 0 && directive->precision == 0)
+		size = 2;
 	max = ft_max(directive->precision, size);
 	if (directive->flags.minus == 1)
 	{
