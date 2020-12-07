@@ -6,7 +6,7 @@
 /*   By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 10:25:18 by lpassera          #+#    #+#             */
-/*   Updated: 2020/12/07 17:57:47 by lpassera         ###   ########.fr       */
+/*   Updated: 2020/12/07 18:58:13 by lpassera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,11 @@
 #include "../includes/ft_string.h"
 #include "../includes/pf_parse_directive.h"
 
-int pf_print_char(t_directive *directive, va_list args)
+int pf_print_char(t_directive *directive, int c)
 {
-	int c;
 	int printed;
 
 	printed = 0;
-	c = va_arg(args, int);;
 	if (directive->flags.minus == 1)
 	{
 		printed += ft_putchar(c);
