@@ -6,7 +6,7 @@
 #    By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/15 11:22:32 by lpassera          #+#    #+#              #
-#    Updated: 2020/12/07 14:13:27 by lpassera         ###   ########.fr        #
+#    Updated: 2020/12/07 16:41:02 by lpassera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,7 @@ $(NAME): $(OBJS)
 	$(AR) $(NAME) $(OBJS)
 
 test: $(OBJS)
-	gcc srcs/main_hex.c $(OBJS)
+	gcc srcs/main_pointer.c $(OBJS)
 
 clean:
 	$(RM) $(OBJS)

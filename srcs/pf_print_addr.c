@@ -6,7 +6,7 @@
 /*   By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 10:25:18 by lpassera          #+#    #+#             */
-/*   Updated: 2020/12/07 14:32:22 by lpassera         ###   ########.fr       */
+/*   Updated: 2020/12/07 16:59:29 by lpassera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "../includes/ft_conversion.h"
 #include "../includes/pf_parse_directive.h"
 
-int	pfa_print_field_width(t_directive *directive, int max)
+int	pfa_print_field_width(t_directive *directive, int max, int *printed_head)
 {
 	int		printed;
 	char	padding_char;
@@ -28,28 +28,38 @@ int	pfa_print_field_width(t_directive *directive, int max)
 	printed = 0;
 	padding_char = ' ';
 	if (directive->flags.zero == 1 && directive->precision == NOT_SET)
+	{
+		if (!*printed_head)
+		{
+			*printed_head = 1;
+			printed += ft_putstr("0x");
+		}
 		padding_char = '0';
+	}
 	printed += ft_putnchar(padding_char, width);
 	return (printed);
 }
 
 int	pfa_handle_zero(int precision, int field_width)
 {
-	if (precision == 0 && field_width == 0)
+	if (precision == 0 && field_width < 3)
 		return (0);
 	if (precision == 0)
 		return (ft_putchar(' '));
-	ft_putchar('0');
-	return (1);
+	return (ft_putchar('0'));
 }
 
-int	pfa_print_precision(t_directive *directive, unsigned long long *value)
+int	pfa_print_precision(t_directive *directive, unsigned long long *value, int *printed_head)
 {
 	int printed;
 	char *number;
 
 	printed = 0;
-	printed += ft_putstr("0x");
+	if (!*printed_head)
+	{
+		*printed_head = 1;
+		printed += ft_putstr("0x");
+	}
 	printed += ft_putnchar('0', directive->precision - ft_unsigned_size(*value, HEX_BASE));
 	if (*value == 0)
 		printed += pfa_handle_zero(directive->precision, directive->field_width);
@@ -68,20 +78,22 @@ int	pf_print_addr(t_directive *directive, va_list args)
 	unsigned long long value;
 	int printed;
 	int max;
+	int printed_head;
 
+	printed_head = 0;
 	printed = 0;
 	value = va_arg(args, unsigned long long);
 	size = ft_unsigned_size(value, HEX_BASE) + 2;
 	max = ft_max(directive->precision, size);
 	if (directive->flags.minus == 1)
 	{
-		printed += pfa_print_precision(directive, &value);
-		printed += pfa_print_field_width(directive, max);
+		printed += pfa_print_precision(directive, &value, &printed_head);
+		printed += pfa_print_field_width(directive, max, &printed_head);
 	}
 	else
 	{
-		printed += pfa_print_field_width(directive, max);
-		printed += pfa_print_precision(directive, &value);
+		printed += pfa_print_field_width(directive, max, &printed_head);
+		printed += pfa_print_precision(directive, &value, &printed_head);
 	}
 	return (printed);
 }
