@@ -6,18 +6,19 @@
 /*   By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 17:18:31 by lpassera          #+#    #+#             */
-/*   Updated: 2020/12/04 17:23:44 by lpassera         ###   ########.fr       */
+/*   Updated: 2020/12/08 16:33:43 by lpassera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_STRING_H
 # define FT_STRING_H
-
 # include <string.h>
 # include <unistd.h>
+
 int		ft_strlen(const char *s);
 char	*ft_strchr(const char *s, int c);
-int ft_putchar(char c);
-int ft_putnchar(char c, int n);
-int ft_putstr(char *str);
+int		ft_putchar(char c);
+int		ft_putnchar(char c, int n);
+int		ft_putstr(char *str);
+
 #endif
