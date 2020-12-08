@@ -6,7 +6,7 @@
 /*   By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 18:00:26 by lpassera          #+#    #+#             */
-/*   Updated: 2020/12/08 16:32:32 by lpassera         ###   ########.fr       */
+/*   Updated: 2020/12/08 18:48:54 by lpassera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define PF_TYPES_H
 
 # define NOT_SET -256
-# define WAS_SET -1024
 # define ERROR -1
 # define FLAG_MINUS 256
 # define FLAG_ZERO 512

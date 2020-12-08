@@ -6,7 +6,7 @@
 #    By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/15 11:22:32 by lpassera          #+#    #+#              #
-#    Updated: 2020/12/07 19:06:55 by lpassera         ###   ########.fr        #
+#    Updated: 2020/12/08 18:55:21 by lpassera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,9 +15,9 @@ CC			= gcc
 CFLAGS 		= -Wall -Wextra -Werror
 RM 			= rm -f
 NAME 		= libftprintf.a
-HEADER 		= includes/nomallocs.h
+HEADER 		= includes/ft_printf.h
 
-SRCS 		= srcs/nomallocs.c \
+SRCS 		= ft_printf.c \
 			  srcs/pf_print_int.c \
 			  srcs/ft_math.c \
 			  srcs/ft_string.c \

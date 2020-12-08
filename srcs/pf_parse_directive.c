@@ -6,13 +6,13 @@
 /*   By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 17:42:26 by lpassera          #+#    #+#             */
-/*   Updated: 2020/12/08 15:57:01 by lpassera         ###   ########.fr       */
+/*   Updated: 2020/12/08 18:52:18 by lpassera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pf_parse_directive.h"
 #include "../includes/ft_conversion.h"
-#include "../includes/nomallocs.h"
+#include "../includes/ft_printf.h"
 #include "../includes/ft_string.h"
 
 void	pf_init_directive(t_directive *directive)
@@ -74,6 +74,6 @@ int		pf_get_flags(t_flags *flags, const char **str)
 		*str += 1;
 	}
 	if (flags->zero == 1 && flags->minus == 1)
-		flags->zero = WAS_SET;
+		flags->zero = 0;
 	return (1);
 }
