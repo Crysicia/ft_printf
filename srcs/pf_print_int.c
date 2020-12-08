@@ -6,7 +6,7 @@
 /*   By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 10:25:18 by lpassera          #+#    #+#             */
-/*   Updated: 2020/12/08 17:15:35 by lpassera         ###   ########.fr       */
+/*   Updated: 2020/12/08 18:31:47 by lpassera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,23 +50,23 @@ int	pfi_handle_zero(int precision, int field_width)
 	return (1);
 }
 
-int	pfi_print_precision(t_directive *directive, long *value)
+int	pfi_print_precision(t_directive *d, long *v)
 {
 	int		printed;
 	char	*number;
 
 	printed = 0;
-	if (*value < 0)
+	if (*v < 0)
 	{
-		*value = -*value;
+		*v = -*v;
 		printed += ft_putchar('-');
 	}
-	printed += ft_putnchar('0', directive->precision - ft_int_size(*value, DECIMAL_BASE));
-	if (*value == 0)
-		printed += pfi_handle_zero(directive->precision, directive->field_width);
+	printed += ft_putnchar('0', d->precision - ft_int_size(*v, DECIMAL_BASE));
+	if (*v == 0)
+		printed += pfi_handle_zero(d->precision, d->field_width);
 	else
 	{
-		number = ft_itoa(*value);
+		number = ft_itoa(*v);
 		printed += ft_putstr(number);
 		free(number);
 	}

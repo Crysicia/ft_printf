@@ -6,7 +6,7 @@
 /*   By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 10:25:18 by lpassera          #+#    #+#             */
-/*   Updated: 2020/12/08 15:58:23 by lpassera         ###   ########.fr       */
+/*   Updated: 2020/12/08 18:33:29 by lpassera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "../includes/ft_conversion.h"
 #include "../includes/pf_parse_directive.h"
 
-int	pfa_print_field_width(t_directive *directive, int max, int *printed_head)
+int	pfa_print_field_width(t_directive *directive, int max, int *head)
 {
 	int		printed;
 	char	padding_char;
@@ -29,9 +29,9 @@ int	pfa_print_field_width(t_directive *directive, int max, int *printed_head)
 	padding_char = ' ';
 	if (directive->flags.zero == 1 && directive->precision == NOT_SET)
 	{
-		if (!*printed_head)
+		if (!*head)
 		{
-			*printed_head = 1;
+			*head = 1;
 			printed += ft_putstr("0x");
 		}
 		padding_char = '0';
@@ -47,23 +47,23 @@ int	pfa_handle_zero(int precision)
 	return (ft_putchar('0'));
 }
 
-int	pfa_print_precision(t_directive *directive, unsigned long long *value, int *printed_head)
+int	pfa_print_precision(t_directive *d, unsigned long long *v, int *head)
 {
 	int		printed;
 	char	*number;
 
 	printed = 0;
-	if (!*printed_head)
+	if (!*head)
 	{
-		*printed_head = 1;
+		*head = 1;
 		printed += ft_putstr("0x");
 	}
-	printed += ft_putnchar('0', directive->precision - ft_unsigned_size(*value, HEX_BASE));
-	if (*value == 0)
-		printed += pfa_handle_zero(directive->precision);
+	printed += ft_putnchar('0', d->precision - ft_unsigned_size(*v, HEX_BASE));
+	if (*v == 0)
+		printed += pfa_handle_zero(d->precision);
 	else
 	{
-		number = ft_utoa_base(*value, HEX_CHARSET);
+		number = ft_utoa_base(*v, HEX_CHARSET);
 		printed += ft_putstr(number);
 		free(number);
 	}
@@ -76,9 +76,9 @@ int	pf_print_addr(t_directive *directive, va_list args)
 	unsigned long long	value;
 	int					printed;
 	int					max;
-	int					printed_head;
+	int					head;
 
-	printed_head = 0;
+	head = 0;
 	printed = 0;
 	value = va_arg(args, unsigned long long);
 	size = ft_unsigned_size(value, HEX_BASE) + 2;
@@ -87,13 +87,13 @@ int	pf_print_addr(t_directive *directive, va_list args)
 	max = ft_max(directive->precision, size);
 	if (directive->flags.minus == 1)
 	{
-		printed += pfa_print_precision(directive, &value, &printed_head);
-		printed += pfa_print_field_width(directive, max, &printed_head);
+		printed += pfa_print_precision(directive, &value, &head);
+		printed += pfa_print_field_width(directive, max, &head);
 	}
 	else
 	{
-		printed += pfa_print_field_width(directive, max, &printed_head);
-		printed += pfa_print_precision(directive, &value, &printed_head);
+		printed += pfa_print_field_width(directive, max, &head);
+		printed += pfa_print_precision(directive, &value, &head);
 	}
 	return (printed);
 }
