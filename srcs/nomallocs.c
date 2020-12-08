@@ -6,7 +6,7 @@
 /*   By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 09:50:55 by lpassera          #+#    #+#             */
-/*   Updated: 2020/12/07 19:05:53 by lpassera         ###   ########.fr       */
+/*   Updated: 2020/12/08 12:28:29 by lpassera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,6 @@
 #include "../includes/ft_string.h"
 #include "../includes/ft_conversion.h"
 #include "../includes/pf_parse_directive.h"
-
-void ft_display(int flags, int field_width, int precision, int conversion)
-{
-	if (flags == ERROR || field_width == ERROR || precision == ERROR || conversion == ERROR)
-		return ;
-	printf("\n----- FLAGS -----\nFlag: %d\nField width: %d\nPrecision: %d\nConversion: %c\n-----------------\n",
-		flags, field_width, precision, conversion);
-}
 
 int ft_convert(t_directive *directive, va_list args)
 {
@@ -64,14 +56,15 @@ int pf_parse_directive(const char **str, va_list args)
 		directive.field_width = ft_abs(directive.field_width);
 	}
 	directive.precision = pf_get_precision(str, args);
-	directive.type = pf_get_conversion(str);
-	//ft_display(flag, field_width, precision, conversion);
+	if ((directive.type = pf_get_conversion(str)) == ERROR)
+		return (ERROR);
 	return (ft_convert(&directive, args));
 }
 
 int ft_printf(const char *format_string, ...)
 {
 	int chars_read;
+	int temp_read;
 	va_list args;
 
 	chars_read = 0;
@@ -81,7 +74,13 @@ int ft_printf(const char *format_string, ...)
 		if (*format_string == '%')
 		{
 			format_string++;
-			chars_read += pf_parse_directive(&format_string, args);
+			temp_read = pf_parse_directive(&format_string, args);
+			if (temp_read == ERROR)
+			{
+				va_end(args);
+				return (ERROR);
+			}
+			chars_read += temp_read;
 		}
 		else
 		{
