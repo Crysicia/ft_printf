@@ -6,7 +6,7 @@
 #    By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/15 11:22:32 by lpassera          #+#    #+#              #
-#    Updated: 2020/12/08 18:55:21 by lpassera         ###   ########.fr        #
+#    Updated: 2020/12/08 21:31:56 by lpassera         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,9 +41,6 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(AR) $(NAME) $(OBJS)
 
-test: $(OBJS)
-	gcc srcs/main_pointer.c $(OBJS)
-
 clean:
 	$(RM) $(OBJS)
 
@@ -52,4 +49,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean
+.PHONY: all clean fclean re

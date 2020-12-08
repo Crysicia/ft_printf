@@ -6,7 +6,7 @@
 /*   By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 09:50:55 by lpassera          #+#    #+#             */
-/*   Updated: 2020/12/08 18:55:33 by lpassera         ###   ########.fr       */
+/*   Updated: 2020/12/08 21:30:47 by lpassera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	pf_parse_directive(const char **str, va_list args)
 int	ft_printf(const char *format_string, ...)
 {
 	int		chars_read;
-	int		temp_read;
+	int		r;
 	va_list args;
 
 	chars_read = 0;
@@ -71,19 +71,15 @@ int	ft_printf(const char *format_string, ...)
 		if (*format_string == '%')
 		{
 			format_string++;
-			temp_read = pf_parse_directive(&format_string, args);
-			if (temp_read == ERROR)
+			if ((r = pf_parse_directive(&format_string, args)) == ERROR)
 			{
 				va_end(args);
 				return (ERROR);
 			}
-			chars_read += temp_read;
+			chars_read += r;
 		}
 		else
-		{
-			chars_read += write(1, format_string, 1);
-			format_string++;
-		}
+			chars_read += write(1, format_string++, 1);
 	}
 	va_end(args);
 	return (chars_read);
