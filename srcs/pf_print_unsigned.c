@@ -6,7 +6,7 @@
 /*   By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 10:25:18 by lpassera          #+#    #+#             */
-/*   Updated: 2020/12/07 13:38:03 by lpassera         ###   ########.fr       */
+/*   Updated: 2020/12/08 16:02:54 by lpassera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ int	pfu_handle_zero(int precision, int field_width)
 
 int	pfu_print_precision(t_directive *directive, unsigned int *value)
 {
-	int printed;
-	char *number;
+	int		printed;
+	char	*number;
 
 	printed = 0;
 	printed += ft_putnchar('0', directive->precision - ft_int_size(*value, DECIMAL_BASE));
@@ -63,10 +63,10 @@ int	pfu_print_precision(t_directive *directive, unsigned int *value)
 
 int	pf_print_unsigned(t_directive *directive, va_list args)
 {
-	int size;
-	unsigned int value;
-	int printed;
-	int max;
+	int				size;
+	unsigned int	value;
+	int				printed;
+	int				max;
 
 	printed = 0;
 	value = va_arg(args, unsigned int);

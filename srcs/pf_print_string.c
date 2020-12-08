@@ -6,7 +6,7 @@
 /*   By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/05 18:54:18 by lpassera          #+#    #+#             */
-/*   Updated: 2020/12/06 16:40:43 by lpassera         ###   ########.fr       */
+/*   Updated: 2020/12/08 16:01:41 by lpassera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "../includes/ft_string.h"
 #include "../includes/pf_parse_directive.h"
 
-int pf_putnstr(const char *str, int limit)
+int	pf_putnstr(const char *str, int limit)
 {
 	int index;
 
@@ -28,12 +28,12 @@ int pf_putnstr(const char *str, int limit)
 	return (index);
 }
 
-int pf_print_string(t_directive *directive, va_list args)
+int	pf_print_string(t_directive *directive, va_list args)
 {
-	const char *str;
-	int printed;
-	int min;
-	char padding_char;
+	const char	*str;
+	int			printed;
+	int			min;
+	char		padding_char;
 
 	printed = 0;
 	if (!(str = va_arg(args, const char *)))

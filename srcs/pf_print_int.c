@@ -6,7 +6,7 @@
 /*   By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 10:25:18 by lpassera          #+#    #+#             */
-/*   Updated: 2020/12/07 20:18:25 by lpassera         ###   ########.fr       */
+/*   Updated: 2020/12/08 16:00:26 by lpassera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ int	pfi_handle_zero(int precision, int field_width)
 
 int	pfi_print_precision(t_directive *directive, long *value)
 {
-	int printed;
-	char *number;
+	int		printed;
+	char	*number;
 
 	printed = 0;
 	if (*value < 0)
@@ -75,11 +75,11 @@ int	pfi_print_precision(t_directive *directive, long *value)
 
 int	pf_print_int(t_directive *directive, va_list args)
 {
-	int size;
-	long value;
-	int printed;
-	int max;
-	int neg;
+	int		size;
+	long	value;
+	int		printed;
+	int		max;
+	int		neg;
 
 	printed = 0;
 	value = va_arg(args, int);

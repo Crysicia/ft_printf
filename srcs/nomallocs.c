@@ -6,7 +6,7 @@
 /*   By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/29 09:50:55 by lpassera          #+#    #+#             */
-/*   Updated: 2020/12/08 12:28:29 by lpassera         ###   ########.fr       */
+/*   Updated: 2020/12/08 15:54:42 by lpassera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "../includes/ft_conversion.h"
 #include "../includes/pf_parse_directive.h"
 
-int ft_convert(t_directive *directive, va_list args)
+int	ft_convert(t_directive *directive, va_list args)
 {
 	if (directive->type == 'c')
 		return (pf_print_char(directive, args));
@@ -38,10 +38,7 @@ int ft_convert(t_directive *directive, va_list args)
 		return (ERROR);
 }
 
-/*
-** Assuming str starts at '%'
-*/
-int pf_parse_directive(const char **str, va_list args)
+int	pf_parse_directive(const char **str, va_list args)
 {
 	t_directive directive;
 
@@ -61,10 +58,10 @@ int pf_parse_directive(const char **str, va_list args)
 	return (ft_convert(&directive, args));
 }
 
-int ft_printf(const char *format_string, ...)
+int	ft_printf(const char *format_string, ...)
 {
-	int chars_read;
-	int temp_read;
+	int		chars_read;
+	int		temp_read;
 	va_list args;
 
 	chars_read = 0;
@@ -84,8 +81,7 @@ int ft_printf(const char *format_string, ...)
 		}
 		else
 		{
-			write(1, format_string, 1);
-			chars_read++;
+			chars_read += write(1, format_string, 1);
 			format_string++;
 		}
 	}

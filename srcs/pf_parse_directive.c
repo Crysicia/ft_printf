@@ -6,7 +6,7 @@
 /*   By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 17:42:26 by lpassera          #+#    #+#             */
-/*   Updated: 2020/12/07 17:52:16 by lpassera         ###   ########.fr       */
+/*   Updated: 2020/12/08 15:57:01 by lpassera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 #include "../includes/nomallocs.h"
 #include "../includes/ft_string.h"
 
-void	 pf_init_directive(t_directive *directive)
+void	pf_init_directive(t_directive *directive)
 {
-    directive->flags.zero = NOT_SET;
-    directive->flags.minus = NOT_SET;
-    directive->field_width = 0;
-    directive->precision = NOT_SET;
-    directive->type = 0;
+	directive->flags.zero = NOT_SET;
+	directive->flags.minus = NOT_SET;
+	directive->field_width = 0;
+	directive->precision = NOT_SET;
+	directive->type = 0;
 }
 
-int pf_get_conversion(const char **str)
+int		pf_get_conversion(const char **str)
 {
 	int conversion;
 
@@ -37,7 +37,7 @@ int pf_get_conversion(const char **str)
 	return (ERROR);
 }
 
-int pf_get_precision(const char **str, va_list args)
+int		pf_get_precision(const char **str, va_list args)
 {
 	int arg;
 
@@ -53,7 +53,7 @@ int pf_get_precision(const char **str, va_list args)
 	return (ft_atoi(str));
 }
 
-int pf_get_field_width(const char **str, va_list args)
+int		pf_get_field_width(const char **str, va_list args)
 {
 	if (**str == '*')
 	{
@@ -63,7 +63,7 @@ int pf_get_field_width(const char **str, va_list args)
 	return (ft_atoi(str));
 }
 
-int pf_get_flags(t_flags *flags, const char **str)
+int		pf_get_flags(t_flags *flags, const char **str)
 {
 	while (ft_strchr("0-", **str))
 	{

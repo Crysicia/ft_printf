@@ -6,13 +6,13 @@
 /*   By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 17:18:02 by lpassera          #+#    #+#             */
-/*   Updated: 2020/12/04 18:47:18 by lpassera         ###   ########.fr       */
+/*   Updated: 2020/12/08 15:50:27 by lpassera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_string.h"
 
-int	ft_strlen(const char *s)
+int		ft_strlen(const char *s)
 {
 	int	index;
 
@@ -37,14 +37,14 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-int ft_putchar(char c)
+int		ft_putchar(char c)
 {
 	write(1, &c, 1);
 	return (1);
 }
 
-int ft_putnchar(char c, int n)
-{	
+int		ft_putnchar(char c, int n)
+{
 	int i;
 
 	i = 0;
@@ -58,7 +58,7 @@ int ft_putnchar(char c, int n)
 	return (n);
 }
 
-int ft_putstr(char *str)
+int		ft_putstr(char *str)
 {
 	int length;
 

@@ -6,7 +6,7 @@
 /*   By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 17:25:49 by lpassera          #+#    #+#             */
-/*   Updated: 2020/12/07 20:18:47 by lpassera         ###   ########.fr       */
+/*   Updated: 2020/12/08 15:48:50 by lpassera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../includes/ft_string.h"
 #include "../includes/pf_types.h"
 
-int				ft_atoi(const char **str)
+int		ft_atoi(const char **str)
 {
 	long	total;
 
@@ -28,7 +28,7 @@ int				ft_atoi(const char **str)
 	return (total);
 }
 
-int ft_int_size(long int n, int base)
+int		ft_int_size(long int n, int base)
 {
 	int	length;
 
@@ -40,7 +40,7 @@ int ft_int_size(long int n, int base)
 	return (length);
 }
 
-char			*ft_itoa(long n)
+char	*ft_itoa(long n)
 {
 	char	*str;
 	size_t	length;
@@ -48,15 +48,6 @@ char			*ft_itoa(long n)
 
 	negative = (n < 0) ? 1 : 0;
 	length = ft_int_size(n, DECIMAL_BASE);
-	// if (n == 0)
-	// {
-	// 	if ((str = malloc(2 * sizeof(char))))
-	// 	{
-	// 		str[0] = '0';
-	// 		str[1] = '\0';
-	// 	}
-	// 	return (str);
-	// }
 	if ((str = malloc(1 + length * sizeof(char))))
 	{
 		str[length--] = '\0';
@@ -71,7 +62,7 @@ char			*ft_itoa(long n)
 	return (str);
 }
 
-int ft_unsigned_size(unsigned long long n, int base)
+int		ft_unsigned_size(unsigned long long n, int base)
 {
 	int	length;
 
@@ -81,7 +72,7 @@ int ft_unsigned_size(unsigned long long n, int base)
 	return (length);
 }
 
-char			*ft_utoa(unsigned long long n)
+char	*ft_utoa(unsigned long long n)
 {
 	char	*str;
 	size_t	length;
@@ -99,11 +90,11 @@ char			*ft_utoa(unsigned long long n)
 	return (str);
 }
 
-char			*ft_utoa_base(unsigned long long n, char *base)
+char	*ft_utoa_base(unsigned long long n, char *base)
 {
 	char	*str;
 	size_t	length;
-	int base_size;
+	int		base_size;
 
 	base_size = ft_strlen(base);
 	length = ft_unsigned_size(n, base_size);

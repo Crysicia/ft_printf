@@ -6,7 +6,7 @@
 /*   By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 10:25:18 by lpassera          #+#    #+#             */
-/*   Updated: 2020/12/07 19:43:53 by lpassera         ###   ########.fr       */
+/*   Updated: 2020/12/08 15:58:23 by lpassera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ int	pfa_handle_zero(int precision)
 
 int	pfa_print_precision(t_directive *directive, unsigned long long *value, int *printed_head)
 {
-	int printed;
-	char *number;
+	int		printed;
+	char	*number;
 
 	printed = 0;
 	if (!*printed_head)
@@ -72,11 +72,11 @@ int	pfa_print_precision(t_directive *directive, unsigned long long *value, int *
 
 int	pf_print_addr(t_directive *directive, va_list args)
 {
-	int size;
-	unsigned long long value;
-	int printed;
-	int max;
-	int printed_head;
+	int					size;
+	unsigned long long	value;
+	int					printed;
+	int					max;
+	int					printed_head;
 
 	printed_head = 0;
 	printed = 0;
