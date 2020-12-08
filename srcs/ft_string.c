@@ -6,7 +6,7 @@
 /*   By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 17:18:02 by lpassera          #+#    #+#             */
-/*   Updated: 2020/12/08 15:50:27 by lpassera         ###   ########.fr       */
+/*   Updated: 2020/12/08 17:15:02 by lpassera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ int		ft_putstr(char *str)
 {
 	int length;
 
+	if (!str)
+		return (0);
 	length = ft_strlen(str);
 	write(1, str, length);
 	return (length);
