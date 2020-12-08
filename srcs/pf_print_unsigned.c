@@ -6,7 +6,7 @@
 /*   By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/01 10:25:18 by lpassera          #+#    #+#             */
-/*   Updated: 2020/12/08 18:52:08 by lpassera         ###   ########.fr       */
+/*   Updated: 2020/12/08 21:17:57 by lpassera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	pfu_print_precision(t_directive *d, unsigned int *v)
 		printed += pfu_handle_zero(d->precision, d->field_width);
 	else
 	{
-		number = ft_utoa(*v);
+		number = ft_utoa_base(*v, DECIMAL_CHARSET);
 		printed += ft_putstr(number);
 		free(number);
 	}

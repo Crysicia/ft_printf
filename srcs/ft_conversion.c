@@ -6,7 +6,7 @@
 /*   By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 17:25:49 by lpassera          #+#    #+#             */
-/*   Updated: 2020/12/08 15:48:50 by lpassera         ###   ########.fr       */
+/*   Updated: 2020/12/08 19:02:56 by lpassera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,24 +70,6 @@ int		ft_unsigned_size(unsigned long long n, int base)
 	while (n /= base)
 		length++;
 	return (length);
-}
-
-char	*ft_utoa(unsigned long long n)
-{
-	char	*str;
-	size_t	length;
-
-	length = ft_unsigned_size(n, DECIMAL_BASE);
-	if ((str = malloc(1 + length * sizeof(char))))
-	{
-		str[length--] = '\0';
-		while (n != 0)
-		{
-			str[length--] = (n % 10) + '0';
-			n /= 10;
-		}
-	}
-	return (str);
 }
 
 char	*ft_utoa_base(unsigned long long n, char *base)

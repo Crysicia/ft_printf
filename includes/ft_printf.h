@@ -6,14 +6,12 @@
 /*   By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 12:07:08 by lpassera          #+#    #+#             */
-/*   Updated: 2020/12/08 18:52:14 by lpassera         ###   ########.fr       */
+/*   Updated: 2020/12/08 19:04:19 by lpassera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef NOMALLOCS_H
 # define NOMALLOCS_H
-# include <stdio.h>
-# include <string.h>
 # include <stdlib.h>
 # include <stdarg.h>
 # include <unistd.h>

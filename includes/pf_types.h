@@ -6,7 +6,7 @@
 /*   By: lpassera <lpassera@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/04 18:00:26 by lpassera          #+#    #+#             */
-/*   Updated: 2020/12/08 18:48:54 by lpassera         ###   ########.fr       */
+/*   Updated: 2020/12/08 21:17:51 by lpassera         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # define HEX_BASE 16
 # define HEX_CHARSET "0123456789abcdef"
 # define HEX_UPPER_CHARSET "0123456789ABCDEF"
+# define DECIMAL_CHARSET "0123456789"
 
 typedef struct	s_flags
 {
